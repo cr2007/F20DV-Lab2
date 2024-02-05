@@ -1,0 +1,23 @@
+@import "vars.css";
+@import "barchart.css";
+@import "bubblechart.css";
+@import "scatterplot.css";
+
+h1 {
+    color: var(--main-color);
+}
+
+p.myClass {
+    color: var(--accent-color);
+}
+
+p#myId {
+    color: goldenrod;
+}
+
+@media (prefers-color-scheme: dark) {
+	* {
+		color: #FCFBFC;
+		background-color: #121212;
+	}
+}
