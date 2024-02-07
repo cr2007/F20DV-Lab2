@@ -36,12 +36,14 @@ bubble1.render(citiesArea); */
 let citiesPop = cities.map((d) => [d.pop, d.area]);
 scatter1.render(citiesPop); */
 
-let data = await d3.csv("data/movies_mock.csv", (d) => {
-	// for each row d, return a new object
-	return {
-		year: new Date(+d.year, 0, 1), // convert "Year" column to Date
-		make: d.Make
-	}
-})
+/** Exercise: D3 Fetch
+ * Loads the data into the application
+ */
+let data = await d3.csv("data/movies_mock.csv") // Load the data
 
-console.log(data);
+console.log(data); // Print the data to the console
+
+let outputElement = document.getElementById("output");
+outputElement.innerText = JSON.stringify(data, null, 2); // Print the data to the page
+
+
