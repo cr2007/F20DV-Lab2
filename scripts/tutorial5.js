@@ -58,4 +58,4 @@ let data = await d3.csv("data/movies_mock.csv", (d) => {
 console.log(data); // Print the data to the console
 
 let outputElement = document.getElementById("output");
-outputElement.innerText = JSON.stringify(data, null, 2); // Print the data to the page
+outputElement.innerText = "CSV Data Loaded Successfully! \n\n" + JSON.stringify(data, null, 2); // Print the data to the page
