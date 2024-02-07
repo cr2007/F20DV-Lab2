@@ -40,14 +40,17 @@ scatter1.render(citiesPop); */
  * Loads the data into the application
  */
 let data = await d3.csv("data/movies_mock.csv", (d) => {
+	let profits = +d.revenues - +d.budget;
 	return {
 		releaseDate: new Date(+d.release_year, d.release_month, 1).toLocaleDateString(),
 		genre: d.genre,
 		director: d.director,
 		budget: +d.budget,
 		revenues: +d.revenues,
-		ratings: [+d.ratings_A, +d.ratings_B, +d.ratings_C]
-	}
+		ratings: [+d.ratings_A, +d.ratings_B, +d.ratings_C],
+		profits: profits,
+		commercialSuccess: profits > 0
+	};
 }); // Load the data
 
 console.log(data); // Print the data to the console
