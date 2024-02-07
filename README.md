@@ -22,9 +22,9 @@
 ---
 
 #### Progress
-![0%](https://progress-bar.dev/0)
+![25%](https://progress-bar.dev/25)
 
-- [ ] [Loading Data](#exercise-loading-data)
+- [X] [Loading Data](#exercise-loading-data)
 - [ ] [Basic Transformations](#exercise-basic-transformations)
 - [ ] [Aggretions](#exercise-aggregations)
 - [ ] [Let's Make a Histogram](#exercise-lets-make-a-histogram)
@@ -39,11 +39,14 @@
 
 > How many records are there in the dataset?
 
-_To insert answer here_
+There are 1001 records in the dataset
 
 > In what format is the dataset structured, inside the application?
 
-_To insert answer here_
+The dataset is structured as an **array of objects**.<br>
+Each object represents a row in the CSV file.
+
+The Console output is also displayed in the HTML page within a `<div>`.
 
 ### Code
 
@@ -54,8 +57,16 @@ _To insert answer here_
 
 <details>
 <summary><code>main.js</code></summary>
-<pre><code class="language-javascript">
+<pre><code class="language-javascript">"use strict";
 
+// ... (Previous Code from Lab 1)
+
+/** Exercise: D3 Fetch
+ * Loads the data into the application
+ */
+let data = await d3.csv("data/movies_mock.csv") // Load the data
+
+console.log(data); // Print the data to the console
 </code></pre>
 </details>
 
