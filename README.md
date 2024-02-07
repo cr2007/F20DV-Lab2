@@ -46,7 +46,11 @@ There are 1001 records in the dataset
 The dataset is structured as an **array of objects**.<br>
 Each object represents a row in the CSV file.
 
+<br>
+
 The Console output is also displayed in the HTML page within a `<div>`.
+
+Two extra attributes have been added: **`profits`** and **`commercialSuccess`** as part of the exercise
 
 ### Code
 
