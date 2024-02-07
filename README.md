@@ -64,7 +64,21 @@ The Console output is also displayed in the HTML page within a `<div>`.
 /** Exercise: D3 Fetch
  * Loads the data into the application
  */
-let data = await d3.csv("data/movies_mock.csv") // Load the data
+
+let data = await d3.csv("data/movies_mock.csv", (d) => {
+	// Calculate profit (will be helpful later on)
+	let profits = +d.revenues - +d.budget;
+	return {
+		releaseDate: new Date(+d.release_year, d.release_month, 1).toLocaleDateString(),
+		genre: d.genre,
+		director: d.director,
+		budget: +d.budget,
+		revenues: +d.revenues,
+		ratings: [+d.ratings_A, +d.ratings_B, +d.ratings_C],
+		profits: profits,
+		commercialSuccess: profits > 0
+	};
+});
 
 console.log(data); // Print the data to the console
 </code></pre>
