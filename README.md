@@ -35,7 +35,7 @@
 
 #### Exercise: Loading Data
 
-[Lab 2 - Tutorial 5](https://cr2007.github.io/F20DV-Lab1/lab2_tutorial5.html)
+[Lab 2 - Tutorial 5](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial5.html)
 
 > How many records are there in the dataset?
 
@@ -79,7 +79,7 @@ console.log(data); // Print the data to the console
 
 #### Exercise: Basic Transformations
 
-[Lab 2 - Tutorial 6](https://cr2007.github.io/F20DV-Lab1/lab2_tutorial6.html)
+[Lab 2 - Tutorial 6](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial6.html)
 
 > What are the unique genres of movie?
 
@@ -126,7 +126,7 @@ _Insert answer here_
 
 ## Tutorial 7: D3 Array
 
-[Lab 2 - Tutorial 7](https://cr2007.github.io/F20DV-Lab1/lab1_tutorial3.html)
+[Lab 2 - Tutorial 7](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial7.html)
 
 #### Exercise: Aggregations
 
