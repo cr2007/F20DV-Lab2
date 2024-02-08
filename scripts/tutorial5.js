@@ -44,7 +44,7 @@ let data = await d3.csv("data/movies_mock.csv", (d) => {
 	// Calculate profit (will be helpful later on)
 	let profits = +d.revenues - +d.budget;
 	return {
-		releaseDate: new Date(+d.release_year, d.release_month, 1).toLocaleDateString(),
+		releaseDate: new Date(+d.release_year, d.release_month, 1)/* .toLocaleDateString() */,
 		genre: d.genre,
 		director: d.director,
 		budget: +d.budget,
