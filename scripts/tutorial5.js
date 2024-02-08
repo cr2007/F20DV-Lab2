@@ -49,7 +49,9 @@ let data = await d3.csv("data/movies_mock.csv", (d) => {
 		director: d.director,
 		budget: +d.budget,
 		revenues: +d.revenues,
-		ratings: [+d.ratings_A, +d.ratings_B, +d.ratings_C],
+		ratings_A: +d.ratings_A,
+		ratings_B: +d.ratings_B,
+		ratings_C: +d.ratings_C,
 		profits: profits,
 		commercialSuccess: profits > 0
 	};
