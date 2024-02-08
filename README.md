@@ -26,7 +26,7 @@
 
 - [X] [Loading Data](#exercise-loading-data)
 - [X] [Basic Transformations](#exercise-basic-transformations)
-- [ ] [Aggretions](#exercise-aggregations)
+- [ ] [Aggregations](#exercise-aggregations)
 - [ ] [Let's Make a Histogram](#exercise-lets-make-a-histogram)
 
 ---
