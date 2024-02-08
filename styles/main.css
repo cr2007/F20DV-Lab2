@@ -20,6 +20,10 @@ p#myId {
     color: goldenrod;
 }
 
+b {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
 	* {
 		color: #FCFBFC;
