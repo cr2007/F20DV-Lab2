@@ -9,6 +9,7 @@
 			<td><b><a href="lab2_tutorial5.html">Tutorial 5</a></b></td>
 			<td><b><a href="lab2_tutorial6.html">Tutorial 6</a></b></td>
 			<td><b><a href="lab2_tutorial7.html">Tutorial 7</a></b></td>
+			<td><b><a href="lab2_tutorial8.html">Tutorial 8</a></b></td>
 		</tr>
 	</table>
 </div>
@@ -22,12 +23,13 @@
 ---
 
 #### Progress
-![57%](https://progress-bar.dev/57)
+![45%](https://progress-bar.dev/45)
 
 - [X] [Loading Data](#exercise-loading-data)
 - [X] [Basic Transformations](#exercise-basic-transformations)
 - [ ] [Aggregations](#exercise-aggregations)
 - [ ] [Let's Make a Histogram](#exercise-lets-make-a-histogram)
+- [ ] [Formatting Data](#exercise-lets-make-a-histogram)
 
 ---
 
@@ -340,6 +342,25 @@ Question7("Drama", 70, "ratings_C")
 
 
 #### Exercise: Let's Make a Histogram
+
+
+### Code
+<details>
+<summary><code>main.js</code></summary>
+<pre><code class="language-javascript">
+</code></pre>
+</details>
+
+---
+<div align="right">
+	<a href="#progress">Back To Top ↥</a>
+</div>
+
+## Tutorial 8: D3 Formats
+
+[Lab 2 - Tutorial 8](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial8.html)
+
+#### Exercise: Formatting Data
 
 
 ### Code
