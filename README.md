@@ -1,6 +1,10 @@
 
 # F20DV Lab 2
 
+<head>
+	<link rel="icon" href="https://d3js.org/logo.svg">
+</head>
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cr2007/F20DV-Lab2)
 
 <div align="center">
