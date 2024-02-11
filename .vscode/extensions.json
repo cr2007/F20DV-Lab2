@@ -22,6 +22,7 @@
 		"esbenp.prettier-vscode",
 		"meganrogge.template-string-converter",
 		"cssho.vscode-svgviewer", // SVG
-		"mechatroner.rainbow-csv" // CSV
+		"mechatroner.rainbow-csv", // CSV
+		"GitHub.copilot"
 	]
 }
