@@ -89,6 +89,15 @@ function Question2() {
 	console.groupEnd();
 }
 
+function Question3() {
+	let budgetBins = d3.bin().value(d=>d.budget).thresholds(10)(data);
+
+	console.group("Q3. Distribute the entries into 10 equally-sized categories based on budget values.");
+		console.log(budgetBins);
+	console.groupEnd();
+}
+
 // Call the functions
 Question1();
 Question2();
+Question3();
