@@ -79,8 +79,6 @@ function Question1() {
 }
 
 function Question2() {
-	let value = d3.groups(data, (d) => d.releaseDate.getFullYear(), (d) => d.genre);
-
 	// Get the number of movies within each subset
 	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear());
 
