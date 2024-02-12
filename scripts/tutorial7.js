@@ -73,7 +73,7 @@ if (data) {
 function Question1() {
 	let value = d3.groups(data, (d) => d.director, (d) => d.genre);
 
-	console.group("Question 1: Group the movies by Director and then by Genre.");
+	console.group("Q1: Group the movies by Director and then by Genre.");
 	console.log(value);
 	console.groupEnd();
 }
