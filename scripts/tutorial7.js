@@ -97,7 +97,7 @@ function Question3() {
 
 function Question4() {
 	// Average Profits by Director
-	let avgProfits = d3.rollup(data, v => d3.mean(v, d => d.profits), d => d.director);
+	let avgProfits = d3.flatRollup(data, v => d3.mean(v, d => d.profits), d => d.director);
 
 	console.group("Q4. What are the average profits by Director?");
 		console.log(avgProfits);
