@@ -104,8 +104,36 @@ function Question4() {
 	console.groupEnd();
 }
 
+function Question5() {
+	// Total Revenues by Genre
+	let totalRevenues = d3.flatRollup(data, v => d3.sum(v, d => d.revenues), d => d.genre);
+
+	console.group('Q5. What are the total revenues by Genre?');
+		console.log(totalRevenues);
+	console.groupEnd();
+}
+
+function Question6() {
+	// Get the set of directors
+	let directors = new Set(data.map(d => d.director));
+
+	// Get the number of movies by director
+	let numMoviesByDirector = d3.rollup(data, v => v.length, d => d.director);
+
+	// Get the number of successful movies by director
+	let numSuccessByDirector = d3.rollup(data.filter(d => d.commercialSuccess), v => v.length, d => d.director);
+
+	let ratio = d3.map(directors, d => [d, numSuccessByDirector.get(d) / numMoviesByDirector.get(d)]);
+
+	console.group("Q6. Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)");
+		console.log(ratio);
+	console.groupEnd();
+}
+
 // Call the functions
 Question1();
 Question2();
 Question3();
 Question4();
+Question5();
+Question6();
