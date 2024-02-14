@@ -74,7 +74,7 @@ function Question1() {
 	let value = d3.groups(data, (d) => d.director, (d) => d.genre);
 
 	console.group("Q1: Group the movies by Director and then by Genre.");
-	console.log(value);
+		console.log(value);
 	console.groupEnd();
 }
 
@@ -83,7 +83,7 @@ function Question2() {
 	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear());
 
 	console.group("Q2. Group the movies by Year and then Genre, and get the number of movies for each subset.");
-	console.log(moviesPerYear);
+		console.log(moviesPerYear);
 	console.groupEnd();
 }
 
