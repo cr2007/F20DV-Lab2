@@ -27,11 +27,11 @@
 ---
 
 #### Progress
-![57%](https://progress-bar.dev/57)
+![60%](https://progress-bar.dev/60)
 
 - [X] [Loading Data](#exercise-loading-data)
 - [X] [Basic Transformations](#exercise-basic-transformations)
-- [ ] [Aggregations](#exercise-aggregations)
+- [X] [Aggregations](#exercise-aggregations)
 - [ ] [Let's Make a Histogram](#exercise-lets-make-a-histogram)
 - [ ] [Formatting Data](#exercise-lets-make-a-histogram)
 
