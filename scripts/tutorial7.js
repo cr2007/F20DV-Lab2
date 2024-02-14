@@ -126,7 +126,7 @@ function Question6() {
 	let ratio = d3.map(directors, d => [d, numSuccessByDirector.get(d) / numMoviesByDirector.get(d)]);
 
 	console.group("Q6. Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)");
-		console.log(ratio);
+		console.log("Success Rate by Director:\n", ratio);
 	console.groupEnd();
 }
 
