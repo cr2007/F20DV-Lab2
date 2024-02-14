@@ -70,49 +70,121 @@ if (data) {
 
 /*** Exercise: Aggregations ***/
 
+/**
+ * This function groups the movies by Director and then by Genre.
+ *
+ * It uses the `d3.groups` function to create a nested array where the first level of nesting is by director and the second level is by genre.
+ *
+ * The result is then logged to the console.
+ *
+ * @returns {void}
+ */
 function Question1() {
+	// Use d3.groups to group the data by director and then by genre
 	let value = d3.groups(data, (d) => d.director, (d) => d.genre);
 
+	// Log the grouped data
 	console.group("Q1: Group the movies by Director and then by Genre.");
 		console.log(value);
 	console.groupEnd();
 }
 
+/**
+ * This function groups the movies by release year and counts the number of movies for each year.
+ *
+ * It uses the `d3.rollup` function to create a Map where the keys are the release years and the values are the counts of movies for each year.
+ *
+ * The result is then logged to the console.
+ *
+ * @returns {void}
+ */
 function Question2() {
-	// Get the number of movies within each subset
+	// Use d3.rollup to group the data by release year and count the number of movies for each year
 	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear());
 
+	// Log the grouped data
 	console.group("Q2. Group the movies by Year and then Genre, and get the number of movies for each subset.");
 		console.log(moviesPerYear);
 	console.groupEnd();
 }
 
+/**
+ * This function distributes the movie entries into 10 equally-sized categories based on budget values.
+ *
+ * It uses the `d3.bin()` function to create a bin generator, which is then applied to the data to generate the bins.
+ *
+ * Each bin is an array of data elements, with two additional properties: `x0` and `x1`, representing the lower and upper bounds of the bin (inclusive lower, exclusive upper).
+ *
+ * The result is then logged to the console.
+ *
+ * @returns {void}
+ */
 function Question3() {
-	let budgetBins = d3.bin().value(d=>d.budget).thresholds(10)(data);
+	// Create a bin generator with the value accessor function set to the budget property of the data elements
+	// and the number of thresholds (bins) set to 10
+	let budgetBins = d3.bin().value(d => d.budget).thresholds(10)(data);
 
+	// Log the bins
 	console.group("Q3. Distribute the entries into 10 equally-sized categories based on budget values.");
 		console.log(budgetBins);
 	console.groupEnd();
 }
 
+/**
+ * This function calculates the average profits by Director.
+ *
+ * It uses the `d3.flatRollup` function to create a flat Map where the keys are the directors and the values are the average profits of their movies.
+ *
+ * The `d3.mean` function is used to calculate the average profits.
+ *
+ * The result is then logged to the console.
+ *
+ * @returns {void}
+ */
 function Question4() {
-	// Average Profits by Director
+	// Use d3.flatRollup to group the data by director and calculate the average profits for each director
 	let avgProfits = d3.flatRollup(data, v => d3.mean(v, d => d.profits), d => d.director);
 
+	// Log the average profits by director
 	console.group("Q4. What are the average profits by Director?");
 		console.log(avgProfits);
 	console.groupEnd();
 }
 
+/**
+ * This function calculates the total revenues by Genre.
+ *
+ * It uses the `d3.flatRollup` function to create a flat Map where the keys are the genres and the values are the total revenues of movies in each genre.
+ *
+ * The `d3.sum` function is used to calculate the total revenues.
+ *
+ * The result is then logged to the console.
+ *
+ * @returns {void}
+ */
 function Question5() {
-	// Total Revenues by Genre
+	// Use d3.flatRollup to group the data by genre and calculate the total revenues for each genre
 	let totalRevenues = d3.flatRollup(data, v => d3.sum(v, d => d.revenues), d => d.genre);
 
+	// Log the total revenues by genre
 	console.group('Q5. What are the total revenues by Genre?');
 		console.log(totalRevenues);
 	console.groupEnd();
 }
 
+/**
+ * This function calculates the ratio of commercial success for each director.
+ *
+ * It first gets the set of directors and the number of movies by each director.
+ *
+ * It then calculates the number of successful movies by each director.
+ *
+ * The ratio of commercial success is calculated as the number of successful movies divided by the total number of movies for each director.
+ * 
+ * The result is then logged to the console.
+ *
+ * @returns {void}
+ */
 function Question6() {
 	// Get the set of directors
 	let directors = new Set(data.map(d => d.director));
@@ -123,8 +195,10 @@ function Question6() {
 	// Get the number of successful movies by director
 	let numSuccessByDirector = d3.rollup(data.filter(d => d.commercialSuccess), v => v.length, d => d.director);
 
+	// Calculate the ratio of commercial success for each director
 	let ratio = d3.map(directors, d => [d, numSuccessByDirector.get(d) / numMoviesByDirector.get(d)]);
 
+	// Log the success rate by director
 	console.group("Q6. Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)");
 		console.log("Success Rate by Director:\n", ratio);
 	console.groupEnd();
@@ -136,7 +210,7 @@ function Question6() {
  *
  * It first filters the data to include only Comedy movies or movies directed by Professor Plum,
  * sorts them by revenues in descending order, and then filters to get the top 10.
- * 
+ *
  * It then uses `d3.intersection` to find the common entries between the two sets of top 10 movies.
  * The common movies are then logged to the console.
  *
