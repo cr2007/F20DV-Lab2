@@ -130,6 +130,40 @@ function Question6() {
 	console.groupEnd();
 }
 
+/**
+ * This function finds any common entries in both the top 10 Comedy movies (by revenue)
+ * and the top 10 movies directed by Professor Plum (by revenue).
+ *
+ * It first filters the data to include only Comedy movies or movies directed by Professor Plum,
+ * sorts them by revenues in descending order, and then filters to get the top 10.
+ * 
+ * It then uses `d3.intersection` to find the common entries between the two sets of top 10 movies.
+ * The common movies are then logged to the console.
+ *
+ * @returns {void}
+ */
+function Question7() {
+	// Define a comparator function to sort by descending order of revenues
+	let revenues = (a, b) => d3.descending(a.revenues, b.revenues);
+
+	// Define a filter function to filter out Top 10 values
+	let top10 = (d, i) => i < 10;
+
+	// Filter the data to include only Comedy movies, sort them by revenues in descending order, and then filter to get the top 10
+	let top10Comedy = d3.sort(data.filter(d => d.genre === 'Comedy'), revenues).filter(top10);
+
+	// Filter the data to include only movies directed by Professor Plum, sort them by revenues in descending order, and then filter to get the top 10
+	let top10Plum = d3.sort(data.filter(d => d.director === "Professor Plum"), revenues).filter(top10);
+
+	// Use d3.intersection to find the common entries between the top 10 Comedy movies and the top 10 movies directed by Professor Plum
+	let commonMovies = Array.from(d3.intersection(top10Comedy, top10Plum));
+
+	// Log the common movies
+	console.group("Q7. Are there any common entries in both the top 10 Comedy (by revenue) and the top 10 directed by Professor Plum (by revenue)?");
+		console.log("Common movies in Top 10 entries\n", commonMovies);
+	console.groupEnd();
+}
+
 // Call the functions
 Question1();
 Question2();
@@ -137,3 +171,4 @@ Question3();
 Question4();
 Question5();
 Question6();
+Question7();
