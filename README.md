@@ -27,7 +27,7 @@
 ---
 
 #### Progress
-![54%](https://progress-bar.dev/54)
+![57%](https://progress-bar.dev/57)
 
 - [X] [Loading Data](#exercise-loading-data)
 - [X] [Basic Transformations](#exercise-basic-transformations)
