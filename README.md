@@ -368,7 +368,103 @@ The answer to most questions can be found in the [Tutorial 7 web page](https://c
 ### Code
 <details>
 <summary><code>main.js</code></summary>
-<pre><code class="language-javascript">
+<pre><code class="language-javascript">"use strict";
+
+// Code from past tutorials (loading data)
+
+/* Aggregations Exercise */
+
+function Question1() {
+	// Use d3.groups to group the data by director and then by genre
+	let value = d3.groups(data, (d) => d.director, (d) => d.genre);
+
+	// Log the grouped data
+	console.group("Q1: Group the movies by Director and then by Genre.");
+		console.log(value);
+	console.groupEnd();
+}
+
+function Question2() {
+	// Use d3.rollup to group the data by release year and count the number of movies for each year
+	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear());
+
+	// Log the grouped data
+	console.group("Q2. Group the movies by Year and then Genre, and get the number of movies for each subset.");
+		console.log(moviesPerYear);
+	console.groupEnd();
+}
+
+function Question3() {
+	// Create a bin generator with the value accessor function set to the budget property of the data elements
+	// and the number of thresholds (bins) set to 10
+	let budgetBins = d3.bin().value(d => d.budget).thresholds(10)(data);
+
+	// Log the bins
+	console.group("Q3. Distribute the entries into 10 equally-sized categories based on budget values.");
+		console.log(budgetBins);
+	console.groupEnd();
+}
+
+function Question4() {
+	// Use d3.flatRollup to group the data by director and calculate the average profits for each director
+	let avgProfits = d3.flatRollup(data, v => d3.mean(v, d => d.profits), d => d.director);
+
+	// Log the average profits by director
+	console.group("Q4. What are the average profits by Director?");
+		console.log(avgProfits);
+	console.groupEnd();
+}
+
+function Question5() {
+	// Use d3.flatRollup to group the data by genre and calculate the total revenues for each genre
+	let totalRevenues = d3.flatRollup(data, v => d3.sum(v, d => d.revenues), d => d.genre);
+
+	// Log the total revenues by genre
+	console.group('Q5. What are the total revenues by Genre?');
+		console.log(totalRevenues);
+	console.groupEnd();
+}
+
+function Question6() {
+	// Get the set of directors
+	let directors = new Set(data.map(d => d.director));
+
+	// Get the number of movies by director
+	let numMoviesByDirector = d3.rollup(data, v => v.length, d => d.director);
+
+	// Get the number of successful movies by director
+	let numSuccessByDirector = d3.rollup(data.filter(d => d.commercialSuccess), v => v.length, d => d.director);
+
+	// Calculate the ratio of commercial success for each director
+	let ratio = d3.map(directors, d => [d, numSuccessByDirector.get(d) / numMoviesByDirector.get(d)]);
+
+	// Log the success rate by director
+	console.group("Q6. Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)");
+		console.log("Success Rate by Director:\n", ratio);
+	console.groupEnd();
+}
+
+function Question7() {
+	// Define a comparator function to sort by descending order of revenues
+	let revenues = (a, b) => d3.descending(a.revenues, b.revenues);
+
+	// Define a filter function to filter out Top 10 values
+	let top10 = (d, i) => i < 10;
+
+	// Filter the data to include only Comedy movies, sort them by revenues in descending order, and then filter to get the top 10
+	let top10Comedy = d3.sort(data.filter(d => d.genre === 'Comedy'), revenues).filter(top10);
+
+	// Filter the data to include only movies directed by Professor Plum, sort them by revenues in descending order, and then filter to get the top 10
+	let top10Plum = d3.sort(data.filter(d => d.director === "Professor Plum"), revenues).filter(top10);
+
+	// Use d3.intersection to find the common entries between the top 10 Comedy movies and the top 10 movies directed by Professor Plum
+	let commonMovies = Array.from(d3.intersection(top10Comedy, top10Plum));
+
+	// Log the common movies
+	console.group("Q7. Are there any common entries in both the top 10 Comedy (by revenue) and the top 10 directed by Professor Plum (by revenue)?");
+		console.log("Common movies in Top 10 entries\n", commonMovies);
+	console.groupEnd();
+}
 </code></pre>
 </details>
 
