@@ -343,6 +343,23 @@ Question7("Drama", 70, "ratings_C")
 
 #### Exercise: Aggregations
 
+Answered the following questions using D3 methods.
+
+The answer to most questions can be found in the [Tutorial 7 web page](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial7.html).
+
+> Group the movies by Director and then by Genre.
+>
+> Group the movies by Year and then Genre, and get the number of movies for each subset.
+>
+> Distribute the entries into 10 equally-sized categories based on budget values.
+>
+> What are the average profits by Director?
+>
+> What are the total revenues by Genre?
+>
+> Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)
+>
+> Are there any common entries in both the top 10 Comedy (by revenue) and the top 10 directed by Professor Plum (by revenue)?
 
 
 #### Exercise: Let's Make a Histogram
