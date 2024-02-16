@@ -1,9 +1,14 @@
 
 # F20DV Lab 2
 
-<head>
-	<link rel="icon" href="https://d3js.org/logo.svg">
-</head>
+<table>
+	<tr>
+		<td><b><a href="https://cr2007.github.io/F20DV-Lab1">← Lab 1</a></b></td>
+		<td><b>Lab 2</b></td>
+		<td><b><a href="https://cr2007.github.io/F20DV-Lab3">Lab 3 →</a></b></td>
+	</tr>
+</table>
+
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cr2007/F20DV-Lab2)
 
