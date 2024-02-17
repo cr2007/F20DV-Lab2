@@ -2,6 +2,7 @@
 @import "barchart.css";
 @import "bubblechart.css";
 @import "scatterplot.css";
+@import "histogram.css";
 @import "consoleOutput.css";
 
 h1 {

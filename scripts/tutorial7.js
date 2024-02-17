@@ -3,6 +3,7 @@
 import BarChart from "./barChart_Tut3.js";
 import BubbleChart from "./bubbleChart_tut3.js";
 import ScatterPlot from "./scatterPlot.js";
+import Histogram from "./histogram.js";
 
 console.log(`d3.version: ${d3.version}`);
 
@@ -180,7 +181,7 @@ function Question5() {
  * It then calculates the number of successful movies by each director.
  *
  * The ratio of commercial success is calculated as the number of successful movies divided by the total number of movies for each director.
- * 
+ *
  * The result is then logged to the console.
  *
  * @returns {void}
@@ -246,3 +247,8 @@ Question4();
 Question5();
 Question6();
 Question7();
+
+/* Histogram */
+let histogram1 = new Histogram("div#histogram1", 800, 500, [10, 40, 60, 25]);
+let profits = data.map(d => d.profits);
+histogram1.setLabels("Profits", "Frequencies").render(profits, 20);
