@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
 
 :root {
-    --main-color: #222;
-    --accent-color: #003c71;
-    --font-text: "Open Sans", sans-serif;
-    --font-title: "DM Serif Display", serif;
+	--main-color: #222;
+	--accent-color: #003c71;
+	--font-text: "Open Sans", sans-serif;
+	--font-title: "DM Serif Display", serif;
 }
 
 @media (prefers-color-scheme: dark) {
