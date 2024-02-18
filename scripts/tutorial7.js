@@ -5,10 +5,7 @@ import Histogram from "./histogram.js";
 console.log(`d3.version: ${d3.version}`);
 
 
-/** Exercise: D3 Fetch
- * Loads the data into the application
- */
-
+// Load the data into the application
 let data = await d3.csv("data/movies_mock.csv", (d) => {
 	// Calculate profit (will be helpful later on)
 	let profits = +d.revenues - +d.budget;
