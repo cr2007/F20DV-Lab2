@@ -2,7 +2,7 @@ svg.histogram {
 	fill: #3F94D3;
 	stroke: #003C71;
 	stroke-width: 2px;
-	border: #FBFAF2 1px solid;
+	border: #003C71 2px solid;
 }
 
 text {
@@ -17,6 +17,7 @@ text {
 		fill: #52AEFF;
 		stroke: #FBFAF2;
 		stroke-width: 0.5px;
+		border: #FBFAF2 1px solid;
 	}
 
 	svg.histogram text {
