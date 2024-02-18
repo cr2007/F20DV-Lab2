@@ -1,6 +1,6 @@
 "use strict";
 
-import Histogram from "./histogram.js";
+import Histogram from "./visualizations/histogram.js";
 
 console.log(`d3.version: ${d3.version}`);
 
