@@ -66,7 +66,7 @@ function Question1() {
  */
 function Question2() {
 	// Use d3.rollup to group the data by release year and count the number of movies for each year
-	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear());
+	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear(), (d) => d.genre);
 
 	// Log the grouped data
 	console.group("Q2. Group the movies by Year and then Genre, and get the number of movies for each subset.");
