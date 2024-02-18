@@ -56,16 +56,17 @@ function Question1() {
 }
 
 /**
- * This function groups the movies by release year and counts the number of movies for each year.
+ * This function groups the movies by release year and genre, and counts the number of movies for each year.
  *
- * It uses the `d3.rollup` function to create a Map where the keys are the release years and the values are the counts of movies for each year.
+ * It uses the `d3.rollup` function to create a Map where the keys are the release years and the secondary keys are the genres.
+ * The values are the counts of movies for each year-genre combination.
  *
  * The result is then logged to the console.
  *
  * @returns {void}
  */
 function Question2() {
-	// Use d3.rollup to group the data by release year and count the number of movies for each year
+	// Use d3.rollup to group the data by release year and genre, and count the number of movies for each subset
 	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear(), (d) => d.genre);
 
 	// Log the grouped data
