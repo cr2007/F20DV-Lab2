@@ -216,7 +216,7 @@ Question5();
 Question6();
 Question7();
 
-/* Histogram */
+/* Exercise: Let's make a Histogram */
 let histogram1 = new Histogram("div#histogram1", 800, 500, [10, 40, 60, 25]);
 let profits = data.map(d => d.profits);
 histogram1.setLabels("Profits", "Frequencies").render(profits, 20);
