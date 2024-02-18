@@ -32,13 +32,13 @@
 ---
 
 #### Progress
-![80%](https://progress-bar.dev/80)
+![100%](https://progress-bar.dev/100)
 
 - [X] [Loading Data](#exercise-loading-data)
 - [X] [Basic Transformations](#exercise-basic-transformations)
 - [X] [Aggregations](#exercise-aggregations)
 - [X] [Let's Make a Histogram](#exercise-lets-make-a-histogram)
-- [ ] [Formatting Data](#exercise-lets-make-a-histogram)
+- [X] [Formatting Data](#exercise-lets-make-a-histogram)
 
 ---
 
@@ -630,11 +630,46 @@ text {
 
 #### Exercise: Formatting Data
 
+Reshaped the movie dataset using the JavaScript data transformations, D3 scales, D3 aggregations, and D3 formats.
+
+Displayed the following output in a console output designed in the HTML page.
 
 ### Code
 <details>
 <summary><code>main.js</code></summary>
-<pre><code class="language-javascript">
+<pre><code class="language-javascript">"use strict";
+
+// Code from past tutorials (loading data)
+
+/* Exercise: Data Formatting */
+
+// Data formats
+let formatDate = d3.timeFormat("%B %Y"); // Format date as "<long-month> <4 digit year>"
+let percentageFormat = d3.format(".2%");
+let siFormat = d3.format(".4s"); // SI prefixed format with 4 significant digits
+let scaleA = d3.scaleLinear([0,  10], [0, 1]),
+	scaleB = d3.scaleLinear([1,   5], [0, 1]),
+	scaleC = d3.scaleLinear([0, 100], [0, 1]);
+
+let sortedData = d3.sort(data, d => d.profits); // Sort the data by profits
+
+// Reshape the data
+let reshapedData = sortedData.map(d => {
+	return {
+		release: formatDate(d.releaseDate),
+		genre: d.genre,
+		director: d.director,
+		rating: percentageFormat(d3.mean([scaleA(d.ratings_A), scaleB(d.ratings_B), scaleC(d.ratings_C)])),
+		profits: siFormat(d.profits)
+	}
+});
+
+let nestedData = d3.groups(reshapedData, d => d.genre, d => d.director); // Nest the data by genre and director
+
+// Print the data to the console
+console.groupCollapsed("View formatted data here ↓")
+console.log(nestedData);
+console.groupEnd();
 </code></pre>
 </details>
 
