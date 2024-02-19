@@ -44,9 +44,9 @@
 
 ## Tutorial 5: D3 Fetch
 
-#### Exercise: Loading Data
-
 [Lab 2 - Tutorial 5](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial5.html)
+
+#### Exercise: Loading Data
 
 > How many records are there in the dataset?
 
@@ -108,9 +108,9 @@ console.log(data); // Print the data to the console
 
 ## Tutorial 6: JS Data Structures and Operations
 
-#### Exercise: Basic Transformations
-
 [Lab 2 - Tutorial 6](https://cr2007.github.io/F20DV-Lab2/lab2_tutorial6.html)
+
+#### Exercise: Basic Transformations
 
 > What are the unique genres of movie?
 
