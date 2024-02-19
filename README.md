@@ -24,7 +24,7 @@
 </div>
 
 
-## Introduction to D3
+## Data Transformations
 
 - **Name:** Chandrashekhar Ramaprasad ([cr2007](mailto:cr2007@hw.ac.uk))
 - **Course:** Data Visualization and Analytics ([**F20DV**](https://curriculum.hw.ac.uk/coursedetails/F20DV?termcode=202324))
