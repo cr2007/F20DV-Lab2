@@ -81,20 +81,20 @@ Two extra attributes have been added: **`profits`** and **`commercialSuccess`** 
  */
 
 let data = await d3.csv("data/movies_mock.csv", (d) => {
-	// Calculate profit (will be helpful later on)
-	let profits = +d.revenues - +d.budget;
-	return {
-		releaseDate: new Date(+d.release_year, d.release_month, 1),
-		genre: d.genre,
-		director: d.director,
-		budget: +d.budget,
-		revenues: +d.revenues,
-		ratings_A: +d.ratings_A,
-		ratings_B: +d.ratings_B,
-		ratings_C: +d.ratings_C,
-		profits: profits,
-		commercialSuccess: profits > 0
-	};
+    // Calculate profit (will be helpful later on)
+    let profits = +d.revenues - +d.budget;
+    return {
+        releaseDate: new Date(+d.release_year, d.release_month, 1),
+        genre: d.genre,
+        director: d.director,
+        budget: +d.budget,
+        revenues: +d.revenues,
+        ratings_A: +d.ratings_A,
+        ratings_B: +d.ratings_B,
+        ratings_C: +d.ratings_C,
+        profits: profits,
+        commercialSuccess: profits > 0
+    };
 });
 
 console.log(data); // Print the data to the console
@@ -155,11 +155,11 @@ $82,706.66
  * @returns {Array} An array of unique genres.
  */
 function getUniqueGenres(data) {
-	let genres = data.map((d) => d.genre);
+    let genres = data.map((d) => d.genre);
 
-	let uniqueGenres = new Set(genres);
+    let uniqueGenres = new Set(genres);
 
-	return [...uniqueGenres];
+    return [...uniqueGenres];
 }
 
 
@@ -170,11 +170,11 @@ function getUniqueGenres(data) {
  * @returns {number} The count of unique directors.
  */
 function countUniqueDirectors(data) {
-	let directors = data.map((d) => d.director);
+    let directors = data.map((d) => d.director);
 
-	let uniqueDirectors = new Set(directors);
+    let uniqueDirectors = new Set(directors);
 
-	return [...uniqueDirectors].length;
+    return [...uniqueDirectors].length;
 }
 
 
@@ -185,7 +185,7 @@ function countUniqueDirectors(data) {
  * @returns {number} The total revenue.
  */
 function sumRevenue(data) {
-	return data.reduce((acc, d) => acc + d.revenues, 0);
+    return data.reduce((acc, d) => acc + d.revenues, 0);
 }
 
 
@@ -198,7 +198,7 @@ function sumRevenue(data) {
  * @returns {number} The number of movies released between year1 and year2.
  */
 function numberOfMoviesReleased(data, year1=2012, year2=2014) {
-	return data.filter((d) => d.releaseDate.getFullYear() >= year1 && d.releaseDate.getFullYear() <= year2).length;
+    return data.filter((d) => d.releaseDate.getFullYear() >= year1 && d.releaseDate.getFullYear() <= year2).length;
 }
 
 
@@ -211,11 +211,11 @@ function numberOfMoviesReleased(data, year1=2012, year2=2014) {
  * @returns {number} The average rating for the given genre.
  */
 function getAverageGenreRating(data, rating="ratings_A", genre="Comedy") {
-	let genreMovies = data.filter((d) => d.genre === genre);
+    let genreMovies = data.filter((d) => d.genre === genre);
 
-	let ratings = genreMovies.map((d) => d[rating]);
+    let ratings = genreMovies.map((d) => d[rating]);
 
-	return ratings.reduce((acc, d) => acc + d, 0) / ratings.length;
+    return ratings.reduce((acc, d) => acc + d, 0) / ratings.length;
 }
 
 
@@ -227,18 +227,18 @@ function getAverageGenreRating(data, rating="ratings_A", genre="Comedy") {
  * @returns {string} "Before" if the industry made more profit before the given year, "After" otherwise.
  */
 function industryMoreProfit(data, year=2015) {
-	// Filter the data to only include movies released on or before the given year
-	let moviesBeforeYear = data.filter((d) => d.releaseDate.getFullYear() <= year);
-	// Calculate the total profit for movies released on or before the given year
-	let profitBeforeYear1 = moviesBeforeYear.reduce((acc, d) => acc + d.profits, 0);
+    // Filter the data to only include movies released on or before the given year
+    let moviesBeforeYear = data.filter((d) => d.releaseDate.getFullYear() <= year);
+    // Calculate the total profit for movies released on or before the given year
+    let profitBeforeYear1 = moviesBeforeYear.reduce((acc, d) => acc + d.profits, 0);
 
-	// Filter the data to only include movies released after the given year
-	let moviesAfterYear = data.filter((d) => d.releaseDate.getFullYear() > year);
-	// Calculate the total profit for movies released after the given year
-	let profitAfterYear1 = moviesAfterYear.reduce((acc, d) => acc + d.profits, 0);
+    // Filter the data to only include movies released after the given year
+    let moviesAfterYear = data.filter((d) => d.releaseDate.getFullYear() > year);
+    // Calculate the total profit for movies released after the given year
+    let profitAfterYear1 = moviesAfterYear.reduce((acc, d) => acc + d.profits, 0);
 
-	// Return "Before" if the profit before the given year is greater than the profit after, "After" otherwise
-	return profitBeforeYear1 > profitAfterYear1 ? "Before" : "After";
+    // Return "Before" if the profit before the given year is greater than the profit after, "After" otherwise
+    return profitBeforeYear1 > profitAfterYear1 ? "Before" : "After";
 }
 
 
@@ -252,76 +252,76 @@ function industryMoreProfit(data, year=2015) {
  * @returns {number} The average budget for movies of the given genre with a rating above the given value from the specified rating source.
  */
 function calculateAverageBudget(data, genre="Drama", minRating=70, ratingSource="ratings_C") {
-	// Filter the data to only include movies of the specified genre
-	let genreMovies = data.filter((d) => d.genre === genre);
+    // Filter the data to only include movies of the specified genre
+    let genreMovies = data.filter((d) => d.genre === genre);
 
-	// Filter the genreMovies array to only include movies with a rating above the specified value from the specified rating source
-	let ratingMovies = genreMovies.filter((d) => d[ratingSource] > minRating);
+    // Filter the genreMovies array to only include movies with a rating above the specified value from the specified rating source
+    let ratingMovies = genreMovies.filter((d) => d[ratingSource] > minRating);
 
-	// Map the ratingMovies array to an array of budgets
-	let budgets = ratingMovies.map((d) => d.budget);
+    // Map the ratingMovies array to an array of budgets
+    let budgets = ratingMovies.map((d) => d.budget);
 
-	// Calculate and return the average budget
-	return budgets.reduce((acc, d) => acc + d, 0) / budgets.length;
+    // Calculate and return the average budget
+    return budgets.reduce((acc, d) => acc + d, 0) / budgets.length;
 }
 
 /* Main Functions */
 
 // Q1. What are the unique genres of movies?
 function Question1() {
-	let uniqueGenres = getUniqueGenres(data);
-	console.group("Q1. What are the unique genres of movies?")
-	console.log(uniqueGenres);
-	console.groupEnd();
-	outputElement.innerText += `\n\nUnique Genres of Movies: \n${uniqueGenres.join(", ")}`;
+    let uniqueGenres = getUniqueGenres(data);
+    console.group("Q1. What are the unique genres of movies?")
+    console.log(uniqueGenres);
+    console.groupEnd();
+    outputElement.innerText += `\n\nUnique Genres of Movies: \n${uniqueGenres.join(", ")}`;
 }
 
 function Question2() {
-	let uniqueDirectorsCount = countUniqueDirectors(data);
-	console.group("Q2. How many unique directors are there?")
-	console.log(uniqueDirectorsCount);
-	console.groupEnd();
-	outputElement.innerText += `\n\nNo. of Unique Directors: ${uniqueDirectorsCount}`;
+    let uniqueDirectorsCount = countUniqueDirectors(data);
+    console.group("Q2. How many unique directors are there?")
+    console.log(uniqueDirectorsCount);
+    console.groupEnd();
+    outputElement.innerText += `\n\nNo. of Unique Directors: ${uniqueDirectorsCount}`;
 }
 
 function Question3() {
-	let totalRevenue = sumRevenue(data);
-	console.group("Q3. What is the total revenue of all movies?")
-	console.log(`$${totalRevenue.toLocaleString()}`);
-	console.groupEnd();
-	outputElement.innerText += `\n\nTotal Revenue: $${totalRevenue.toLocaleString()}`;
+    let totalRevenue = sumRevenue(data);
+    console.group("Q3. What is the total revenue of all movies?")
+    console.log(`$${totalRevenue.toLocaleString()}`);
+    console.groupEnd();
+    outputElement.innerText += `\n\nTotal Revenue: $${totalRevenue.toLocaleString()}`;
 }
 
 function Question4(year1, year2) {
-	let releasedMoviesCount = numberOfMoviesReleased(data, year1, year2);
-	console.group("Q4. How many movies were released between 2012 and 2014 (included) ?")
-	console.log(releasedMoviesCount);
-	console.groupEnd();
-	outputElement.innerText += `\n\nNo. of Movies released between ${year1} and ${year2}: ${releasedMoviesCount}`;
+    let releasedMoviesCount = numberOfMoviesReleased(data, year1, year2);
+    console.group("Q4. How many movies were released between 2012 and 2014 (included) ?")
+    console.log(releasedMoviesCount);
+    console.groupEnd();
+    outputElement.innerText += `\n\nNo. of Movies released between ${year1} and ${year2}: ${releasedMoviesCount}`;
 }
 
 function Question5(rating, genre) {
-	let averageMovieRating = getAverageGenreRating(data, rating, genre);
-	console.group("Q5. What is the average rating on website A for comedy movies?")
-	console.log(`${averageMovieRating.toFixed(2)} / 10`);
-	console.groupEnd();
-	outputElement.innerText += `\n\nAverage Rating on Website A for ${genre} is: ${averageMovieRating.toFixed(2)} / 10`;
+    let averageMovieRating = getAverageGenreRating(data, rating, genre);
+    console.group("Q5. What is the average rating on website A for comedy movies?")
+    console.log(`${averageMovieRating.toFixed(2)} / 10`);
+    console.groupEnd();
+    outputElement.innerText += `\n\nAverage Rating on Website A for ${genre} is: ${averageMovieRating.toFixed(2)} / 10`;
 }
 
 function Question6(year) {
-	let beforeOrAfterYear = industryMoreProfit(data, year);
-	console.group(`Q6. Has the industry made more profit before ${year} (included) or after?`)
-	console.log(beforeOrAfterYear);
-	console.groupEnd();
-	outputElement.innerText += `\n\nIndustry made more profit before ${year} (included) or After?\n${beforeOrAfterYear}`;
+    let beforeOrAfterYear = industryMoreProfit(data, year);
+    console.group(`Q6. Has the industry made more profit before ${year} (included) or after?`)
+    console.log(beforeOrAfterYear);
+    console.groupEnd();
+    outputElement.innerText += `\n\nIndustry made more profit before ${year} (included) or After?\n${beforeOrAfterYear}`;
 }
 
 function Question7(genre, minRating, ratingSource) {
-	let averageBudget = calculateAverageBudget(data, genre, minRating, ratingSource).toFixed(2);
-	console.group(`Q7. What’s the average budget of ${genre} movies with a rating above ${minRating}% on Website C?`)
-	console.log(`$${Number(averageBudget).toLocaleString()}`);
-	console.groupEnd();
-	outputElement.innerText += `\n\nAverage budget of ${genre} movies with a rating above ${minRating}% on Website C: $${Number(averageBudget).toLocaleString()}`;
+    let averageBudget = calculateAverageBudget(data, genre, minRating, ratingSource).toFixed(2);
+    console.group(`Q7. What’s the average budget of ${genre} movies with a rating above ${minRating}% on Website C?`)
+    console.log(`$${Number(averageBudget).toLocaleString()}`);
+    console.groupEnd();
+    outputElement.innerText += `\n\nAverage budget of ${genre} movies with a rating above ${minRating}% on Website C: $${Number(averageBudget).toLocaleString()}`;
 }
 
 
@@ -383,95 +383,95 @@ Rendered the class using the dataset provided
 /* Aggregations Exercise */
 
 function Question1() {
-	// Use d3.groups to group the data by director and then by genre
-	let value = d3.groups(data, (d) => d.director, (d) => d.genre);
+    // Use d3.groups to group the data by director and then by genre
+    let value = d3.groups(data, (d) => d.director, (d) => d.genre);
 
-	// Log the grouped data
-	console.group("Q1: Group the movies by Director and then by Genre.");
-		console.log(value);
-	console.groupEnd();
+    // Log the grouped data
+    console.group("Q1: Group the movies by Director and then by Genre.");
+        console.log(value);
+    console.groupEnd();
 }
 
 function Question2() {
-	// Use d3.rollup to group the data by release year and genre, and count the number of movies for each subset
-	let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear(), (d) => d.genre);
+    // Use d3.rollup to group the data by release year and genre, and count the number of movies for each subset
+    let moviesPerYear = d3.rollup(data, (v) => v.length, (d) => d.releaseDate.getFullYear(), (d) => d.genre);
 
-	// Log the grouped data
-	console.group("Q2. Group the movies by Year and then Genre, and get the number of movies for each subset.");
-		console.log(moviesPerYear);
-	console.groupEnd();
+    // Log the grouped data
+    console.group("Q2. Group the movies by Year and then Genre, and get the number of movies for each subset.");
+        console.log(moviesPerYear);
+    console.groupEnd();
 }
 
 function Question3() {
-	// Create a bin generator with the value accessor function set to the budget property of the data elements
-	// and the number of thresholds (bins) set to 10
-	let budgetBins = d3.bin().value(d => d.budget).thresholds(10)(data);
+    // Create a bin generator with the value accessor function set to the budget property of the data elements
+    // and the number of thresholds (bins) set to 10
+    let budgetBins = d3.bin().value(d => d.budget).thresholds(10)(data);
 
-	// Log the bins
-	console.group("Q3. Distribute the entries into 10 equally-sized categories based on budget values.");
-		console.log(budgetBins);
-	console.groupEnd();
+    // Log the bins
+    console.group("Q3. Distribute the entries into 10 equally-sized categories based on budget values.");
+        console.log(budgetBins);
+    console.groupEnd();
 }
 
 function Question4() {
-	// Use d3.flatRollup to group the data by director and calculate the average profits for each director
-	let avgProfits = d3.flatRollup(data, v => d3.mean(v, d => d.profits), d => d.director);
+    // Use d3.flatRollup to group the data by director and calculate the average profits for each director
+    let avgProfits = d3.flatRollup(data, v => d3.mean(v, d => d.profits), d => d.director);
 
-	// Log the average profits by director
-	console.group("Q4. What are the average profits by Director?");
-		console.log(avgProfits);
-	console.groupEnd();
+    // Log the average profits by director
+    console.group("Q4. What are the average profits by Director?");
+        console.log(avgProfits);
+    console.groupEnd();
 }
 
 function Question5() {
-	// Use d3.flatRollup to group the data by genre and calculate the total revenues for each genre
-	let totalRevenues = d3.flatRollup(data, v => d3.sum(v, d => d.revenues), d => d.genre);
+    // Use d3.flatRollup to group the data by genre and calculate the total revenues for each genre
+    let totalRevenues = d3.flatRollup(data, v => d3.sum(v, d => d.revenues), d => d.genre);
 
-	// Log the total revenues by genre
-	console.group('Q5. What are the total revenues by Genre?');
-		console.log(totalRevenues);
-	console.groupEnd();
+    // Log the total revenues by genre
+    console.group('Q5. What are the total revenues by Genre?');
+        console.log(totalRevenues);
+    console.groupEnd();
 }
 
 function Question6() {
-	// Get the set of directors
-	let directors = new Set(data.map(d => d.director));
+    // Get the set of directors
+    let directors = new Set(data.map(d => d.director));
 
-	// Get the number of movies by director
-	let numMoviesByDirector = d3.rollup(data, v => v.length, d => d.director);
+    // Get the number of movies by director
+    let numMoviesByDirector = d3.rollup(data, v => v.length, d => d.director);
 
-	// Get the number of successful movies by director
-	let numSuccessByDirector = d3.rollup(data.filter(d => d.commercialSuccess), v => v.length, d => d.director);
+    // Get the number of successful movies by director
+    let numSuccessByDirector = d3.rollup(data.filter(d => d.commercialSuccess), v => v.length, d => d.director);
 
-	// Calculate the ratio of commercial success for each director
-	let ratio = d3.map(directors, d => [d, numSuccessByDirector.get(d) / numMoviesByDirector.get(d)]);
+    // Calculate the ratio of commercial success for each director
+    let ratio = d3.map(directors, d => [d, numSuccessByDirector.get(d) / numMoviesByDirector.get(d)]);
 
-	// Log the success rate by director
-	console.group("Q6. Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)");
-		console.log("Success Rate by Director:\n", ratio);
-	console.groupEnd();
+    // Log the success rate by director
+    console.group("Q6. Construct a new array, each entry with two values: the Director name and their ratio of commercial success (profitable / total number of movies)");
+        console.log("Success Rate by Director:\n", ratio);
+    console.groupEnd();
 }
 
 function Question7() {
-	// Define a comparator function to sort by descending order of revenues
-	let revenues = (a, b) => d3.descending(a.revenues, b.revenues);
+    // Define a comparator function to sort by descending order of revenues
+    let revenues = (a, b) => d3.descending(a.revenues, b.revenues);
 
-	// Define a filter function to filter out Top 10 values
-	let top10 = (d, i) => i < 10;
+    // Define a filter function to filter out Top 10 values
+    let top10 = (d, i) => i < 10;
 
-	// Filter the data to include only Comedy movies, sort them by revenues in descending order, and then filter to get the top 10
-	let top10Comedy = d3.sort(data.filter(d => d.genre === 'Comedy'), revenues).filter(top10);
+    // Filter the data to include only Comedy movies, sort them by revenues in descending order, and then filter to get the top 10
+    let top10Comedy = d3.sort(data.filter(d => d.genre === 'Comedy'), revenues).filter(top10);
 
-	// Filter the data to include only movies directed by Professor Plum, sort them by revenues in descending order, and then filter to get the top 10
-	let top10Plum = d3.sort(data.filter(d => d.director === "Professor Plum"), revenues).filter(top10);
+    // Filter the data to include only movies directed by Professor Plum, sort them by revenues in descending order, and then filter to get the top 10
+    let top10Plum = d3.sort(data.filter(d => d.director === "Professor Plum"), revenues).filter(top10);
 
-	// Use d3.intersection to find the common entries between the top 10 Comedy movies and the top 10 movies directed by Professor Plum
-	let commonMovies = Array.from(d3.intersection(top10Comedy, top10Plum));
+    // Use d3.intersection to find the common entries between the top 10 Comedy movies and the top 10 movies directed by Professor Plum
+    let commonMovies = Array.from(d3.intersection(top10Comedy, top10Plum));
 
-	// Log the common movies
-	console.group("Q7. Are there any common entries in both the top 10 Comedy (by revenue) and the top 10 directed by Professor Plum (by revenue)?");
-		console.log("Common movies in Top 10 entries\n", commonMovies);
-	console.groupEnd();
+    // Log the common movies
+    console.group("Q7. Are there any common entries in both the top 10 Comedy (by revenue) and the top 10 directed by Professor Plum (by revenue)?");
+        console.log("Common movies in Top 10 entries\n", commonMovies);
+    console.groupEnd();
 }
 
 /* Histogram Code */
@@ -484,107 +484,107 @@ histogram1.setLabels("Profits", "Frequencies").render(profits, 20);
 <details>
 <summary><code>histogram.js</code></summary>
 <pre><code class="language-javascript">export default class Histogram {
-	// Attributes (you can make those private too)
-	width; height; margin;    // Size
-	svg; chart; bars;         // Selections
-	axisX; axisY;             // Axes
-	labelX; labelY;           // Labels
-	scaleX; scaleY;           // Scales
-	data;                     // Internal Data
+    // Attributes (you can make those private too)
+    width; height; margin;    // Size
+    svg; chart; bars;         // Selections
+    axisX; axisY;             // Axes
+    labelX; labelY;           // Labels
+    scaleX; scaleY;           // Scales
+    data;                     // Internal Data
 
-	/*
-	- container: DOM selector
-	- width: visualization width
-	- height: visualization heigh
-	- margin: chart area margins [top, bottom, left, right]
-	*/
-	constructor(container, width, height, margin) {
-		this.width  = width;
-		this.height = height;
-		this.margin = margin;
+    /*
+    - container: DOM selector
+    - width: visualization width
+    - height: visualization heigh
+    - margin: chart area margins [top, bottom, left, right]
+    */
+    constructor(container, width, height, margin) {
+        this.width  = width;
+        this.height = height;
+        this.margin = margin;
 
-		this.svg = d3.select(container).append("svg")
-			.classed("histogram", true)
-			.attr("width", this.width).attr("height", this.height);
+        this.svg = d3.select(container).append("svg")
+            .classed("histogram", true)
+            .attr("width", this.width).attr("height", this.height);
 
-		this.chart = this.svg.append("g")
-			.attr("transform", `translate(${this.margin[2]}, ${this.margin[0]})`);
+        this.chart = this.svg.append("g")
+            .attr("transform", `translate(${this.margin[2]}, ${this.margin[0]})`);
 
-		this.bars = this.chart.selectAll("rect.bar");
+        this.bars = this.chart.selectAll("rect.bar");
 
-		// Axes
-		this.axisX = this.svg.append("g")
-			.attr("transform", `translate(${this.margin[2]}, ${this.height - this.margin[1]})`);
-		this.axisY = this.svg.append("g")
-			.attr("transform", `translate(${this.margin[2]}, ${this.margin[0]})`);
+        // Axes
+        this.axisX = this.svg.append("g")
+            .attr("transform", `translate(${this.margin[2]}, ${this.height - this.margin[1]})`);
+        this.axisY = this.svg.append("g")
+            .attr("transform", `translate(${this.margin[2]}, ${this.margin[0]})`);
 
-		// Labels
-		this.labelX = this.svg.append("text").classed("legend", true)
-			.attr("transform", `translate(${this.width / 2}, ${this.height})`)
-			.style("text-anchor", "middle").attr("dy", -5);
+        // Labels
+        this.labelX = this.svg.append("text").classed("legend", true)
+            .attr("transform", `translate(${this.width / 2}, ${this.height})`)
+            .style("text-anchor", "middle").attr("dy", -5);
 
-		this.labelY = this.svg.append("text").classed("legend", true)
-			.attr("transform", `translate(0, ${this.margin[0]})rotate(-90)`)
-			.style("text-anchor", "end").attr("dy", 15);
-	}
+        this.labelY = this.svg.append("text").classed("legend", true)
+            .attr("transform", `translate(0, ${this.margin[0]})rotate(-90)`)
+            .style("text-anchor", "end").attr("dy", 15);
+    }
 
-	#updateScales() {
-		let chartWidth  = this.width  - this.margin[2] - this.margin[3],
-			chartHeight = this.height - this.margin[0] - this.margin[1];
+    #updateScales() {
+        let chartWidth  = this.width  - this.margin[2] - this.margin[3],
+            chartHeight = this.height - this.margin[0] - this.margin[1];
 
-		let rangeX = [0, chartWidth],
-			rangeY = [chartHeight, 0];
+        let rangeX = [0, chartWidth],
+            rangeY = [chartHeight, 0];
 
-		let domainX = [d3.min(this.data, d => d[1]), d3.max(this.data, d => d[2])],
-			domainY = [0, d3.max(this.data, (d) => d[0])];
+        let domainX = [d3.min(this.data, d => d[1]), d3.max(this.data, d => d[2])],
+            domainY = [0, d3.max(this.data, (d) => d[0])];
 
-		this.scaleX = d3.scaleLinear(domainX, rangeX);
-		this.scaleY = d3.scaleLinear(domainY, rangeY).nice();
-	}
+        this.scaleX = d3.scaleLinear(domainX, rangeX);
+        this.scaleY = d3.scaleLinear(domainY, rangeY).nice();
+    }
 
-	#updateAxes() {
-		let axisGenX = d3.axisBottom(this.scaleX),
-			axisGenY = d3.axisLeft(this.scaleY).tickFormat(d3.format(".0%"));
+    #updateAxes() {
+        let axisGenX = d3.axisBottom(this.scaleX),
+            axisGenY = d3.axisLeft(this.scaleY).tickFormat(d3.format(".0%"));
 
-		this.axisX.call(axisGenX);
-		this.axisY.call(axisGenY);
-	}
+        this.axisX.call(axisGenX);
+        this.axisY.call(axisGenY);
+    }
 
-	// Private methods
-	// data is in the format [[key, value], ...]
-	#updateBars() {
-		this.bars = this.bars
-			.data(this.data, (d) => d[0])
-			.join("rect")
-			.classed("bar", true)
-			.attr("x", (d) => this.scaleX(d[1]) + 0.5)
-			.attr("y", (d) => this.scaleY(d[0]))
-			.attr("width", d => this.scaleX(d[2]) - this.scaleX(d[1]) - 1)
-			.attr("height", (d) => this.scaleY(0) - this.scaleY(d[0]));
-	}
+    // Private methods
+    // data is in the format [[key, value], ...]
+    #updateBars() {
+        this.bars = this.bars
+            .data(this.data, (d) => d[0])
+            .join("rect")
+            .classed("bar", true)
+            .attr("x", (d) => this.scaleX(d[1]) + 0.5)
+            .attr("y", (d) => this.scaleY(d[0]))
+            .attr("width", d => this.scaleX(d[2]) - this.scaleX(d[1]) - 1)
+            .attr("height", (d) => this.scaleY(0) - this.scaleY(d[0]));
+    }
 
-	// Public API
+    // Public API
 
-	// The dataset parameter needs to be in a generic format,
-	// so that it works for all future data
-	// here we assume a [[k, v], ...] format for efficiency
-	render(dataset, thresholds = 10) {
-		// bin generator
-		let binGen = d3.bin().thresholds(thresholds);
+    // The dataset parameter needs to be in a generic format,
+    // so that it works for all future data
+    // here we assume a [[k, v], ...] format for efficiency
+    render(dataset, thresholds = 10) {
+        // bin generator
+        let binGen = d3.bin().thresholds(thresholds);
 
-		// generate data: [[ratio, bin_lower, bin_uppper], ...]
-		this.data = binGen(dataset).map((d) => [d.length / dataset.length, d.x0, d.x1]);
-		this.#updateScales();
-		this.#updateBars();
-		this.#updateAxes();
-		return this; // to allow chaining
-	}
+        // generate data: [[ratio, bin_lower, bin_uppper], ...]
+        this.data = binGen(dataset).map((d) => [d.length / dataset.length, d.x0, d.x1]);
+        this.#updateScales();
+        this.#updateBars();
+        this.#updateAxes();
+        return this; // to allow chaining
+    }
 
-	setLabels(labelX = "values", labelY = "frequencies") {
-		this.labelX.text(labelX);
-		this.labelY.text(labelY);
-		return this; // to allow chaining
-	}
+    setLabels(labelX = "values", labelY = "frequencies") {
+        this.labelX.text(labelX);
+        this.labelY.text(labelY);
+        return this; // to allow chaining
+    }
 }
 </code></pre>
 </details>
@@ -592,29 +592,29 @@ histogram1.setLabels("Profits", "Frequencies").render(profits, 20);
 <details>
 <summary><code>histogram.css</code></summary>
 <pre><code class="language-css">svg.histogram {
-	fill: #3F94D3;
-	stroke: #003C71;
-	stroke-width: 2px;
-	border: #FBFAF2 1px solid;
+    fill: #3F94D3;
+    stroke: #003C71;
+    stroke-width: 2px;
+    border: #FBFAF2 1px solid;
 }
 
 text {
-	font-family: sans-serif;
-	font-size: 12px;
-	fill: #121212;
-	stroke: none;
+    font-family: sans-serif;
+    font-size: 12px;
+    fill: #121212;
+    stroke: none;
 }
 
 @media (prefers-color-scheme: dark) {
-	svg.histogram {
-		fill: #52AEFF;
-		stroke: #FBFAF2;
-		stroke-width: 0.5px;
-	}
+    svg.histogram {
+        fill: #52AEFF;
+        stroke: #FBFAF2;
+        stroke-width: 0.5px;
+    }
 
-	svg.histogram text {
-		fill: #FBFAF2;
-	}
+    svg.histogram text {
+        fill: #FBFAF2;
+    }
 }
 </code></pre>
 </details>
@@ -648,20 +648,20 @@ let formatDate = d3.timeFormat("%B %Y"); // Format date as "<long-month> <4 digi
 let percentageFormat = d3.format(".2%");
 let siFormat = d3.format(".4s"); // SI prefixed format with 4 significant digits
 let scaleA = d3.scaleLinear([0,  10], [0, 1]),
-	scaleB = d3.scaleLinear([1,   5], [0, 1]),
-	scaleC = d3.scaleLinear([0, 100], [0, 1]);
+    scaleB = d3.scaleLinear([1,   5], [0, 1]),
+    scaleC = d3.scaleLinear([0, 100], [0, 1]);
 
 let sortedData = d3.sort(data, d => d.profits); // Sort the data by profits
 
 // Reshape the data
 let reshapedData = sortedData.map(d => {
-	return {
-		release: formatDate(d.releaseDate),
-		genre: d.genre,
-		director: d.director,
-		rating: percentageFormat(d3.mean([scaleA(d.ratings_A), scaleB(d.ratings_B), scaleC(d.ratings_C)])),
-		profits: siFormat(d.profits)
-	}
+    return {
+        release: formatDate(d.releaseDate),
+        genre: d.genre,
+        director: d.director,
+        rating: percentageFormat(d3.mean([scaleA(d.ratings_A), scaleB(d.ratings_B), scaleC(d.ratings_C)])),
+        profits: siFormat(d.profits)
+    }
 });
 
 let nestedData = d3.groups(reshapedData, d => d.genre, d => d.director); // Nest the data by genre and director
