@@ -50,7 +50,7 @@
 
 > How many records are there in the dataset?
 
-There are 1001 records in the dataset
+There are 1000 records in the dataset
 
 > In what format is the dataset structured, inside the application?
 
